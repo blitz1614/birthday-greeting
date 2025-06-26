@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday pu!</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<style>
+    /* Base styles */
+    :root {
+        --purple-1: #6e00ff;
+        --purple-2: #9c27b0;
+        --purple-3: #c500ff;
+        --gold-1: #FFD700;
+        --gold-2: #FFC000;
+        --gold-3: #FFA500;
+        --gold-4: #FF8C00;
+        --gold-5: #DAA520;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, var(--purple-1), var(--purple-2), var(--purple-3));
+        background-size: 400% 400%;
+        animation: gradientFlow 15s ease infinite;
+        color: white;
+        transition: background 1s ease;
+    }
+
+    body.gold-theme {
+        background: linear-gradient(135deg, var(--gold-1), var(--gold-3), var(--gold-4));
+        animation: gradientFlow 15s ease infinite;
+    }
+
+    @keyframes gradientFlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Confetti canvas */
+    #confetti {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+        display: block;
+    }
+
+    /* Heart particles */
+    .heart-particle {
+        position: fixed;
+        color: #ff0000;
+        font-size: 20px;
+        pointer-events: none;
+        z-index: 10;
+        animation: floatUp 4s ease-in forwards;
+    }
+
+    @keyframes floatUp {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Hero section */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 30px;
+    }
+
+    h1, h2 {
+        font-family: 'Dancing Script', cursive;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+        color:rgb(229, 229, 230);
+    }
+
+    /* Special name animation - Restored original animations */
+    .name {
+        color:rgb(248, 248, 248);
+        display: inline-block;
+        text-shadow: 0 0 10px rgba(225, 0, 255, 0.7);
+        animation: nameGlow 2s infinite alternate;
+        transform-origin: center;
+        transition: all 1s ease;
+    }
+
+    .gold-theme .name {
+        color: #FFF8DC;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    }
+
+    @keyframes nameGlow {
+        0% { transform: scale(1); text-shadow: 0 0 10px rgba(225, 0, 255, 0.7); }
+        100% { transform: scale(1.05); text-shadow: 0 0 20px rgba(225, 0, 255, 0.9); }
+    }
+
+    .gold-theme .name {
+        animation: goldNameGlow 2s infinite alternate;
+    }
+
+    @keyframes goldNameGlow {
+        0% { transform: scale(1); text-shadow: 0 0 10px rgba(255, 215, 0, 0.7); }
+        100% { transform: scale(1.05); text-shadow: 0 0 20px rgba(255, 215, 0, 0.9); }
+    }
+
+    .subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        color:rgb(214, 203, 230);
+        margin-bottom: 20px;
+        transition: color 1s ease;
+    }
+
+    .gold-theme .subtitle {
+        color: #FFF8DC;
+    }
+
+    .heart {
+        font-size: 3rem;
+        text-align: center;
+        margin: 20px 0;
+        animation: pulse 2s infinite;
+        color: #e100ff;
+        transition: color 1s ease;
+    }
+
+    .gold-theme .heart {
+        color: var(--gold-1);
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+
+    /* Make a Wish button */
+    .wish-btn {
+        background: linear-gradient(135deg, #ff00cc, #ff0066);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 50px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        cursor: pointer;
+        margin: 10px auto;
+        display: block;
+        box-shadow: 0 4px 15px rgba(255, 0, 204, 0.4);
+        transition: all 0.3s ease;
+    }
+
+    .wish-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 0, 204, 0.6);
+    }
+
+    .wish-btn:active {
+        transform: translateY(1px);
+    }
+
+    /* Cake Popup Styles */
+    #cakePopup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        display: none;
+        background: linear-gradient(135deg, var(--purple-1), var(--purple-3));
+        width: 300px;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 30px rgba(157, 0, 255, 0.7);
+        text-align: center;
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+        animation: cakeAppear 0.5s ease-in-out forwards;
+    }
+
+    .gold-theme #cakePopup {
+        background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+    }
+
+    @keyframes cakeAppear {
+        0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+        100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+
+    #cakePopup h3 {
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.8rem;
+        margin-bottom: 50px;
+        color: white;
+    }
+
+    .cake {
+        position: relative;
+        width: 200px;
+        height: 150px;
+        margin: 0 auto 20px;
+    }
+
+    .cake-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 180px;
+        height: 80px;
+        background: #f8c8dc;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .cake-top {
+        position: absolute;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px;
+        height: 50px;
+        background: #f8a8c8;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .candle {
+        position: absolute;
+        bottom: 130px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 8px;
+        height: 30px;
+        background: white;
+        z-index: 2;
+    }
+
+    .flame {
+        position: absolute;
+        bottom: 160px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 15px;
+        height: 25px;
+        background: #ff9d00;
+        border-radius: 50% 50% 20% 20%;
+        box-shadow: 0 0 10px #ff9d00, 0 0 20px #ff6b00;
+        animation: flicker 0.5s infinite alternate;
+        z-index: 3;
+    }
+
+    @keyframes flicker {
+        0% { transform: translateX(-50%) scale(1); opacity: 1; }
+        50% { transform: translateX(-50%) scale(1.1, 0.9); opacity: 0.9; }
+        100% { transform: translateX(-50%) scale(0.9, 1.1); opacity: 0.8; }
+    }
+
+    .close-cake-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .close-cake-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Message Cake */
+    #messageCake {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        display: none;
+        background: linear-gradient(135deg, var(--purple-1), var(--purple-3));
+        width: 350px;
+        padding: 40px 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 30px rgba(157, 0, 255, 0.7);
+        text-align: left;
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+        animation: cakeAppear 0.5s ease-in-out forwards;
+        transition: all 1s ease;
+    }
+
+    .gold-theme #messageCake {
+        background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+        animation: cakeAppear 0.5s ease-in-out forwards, cakeGlow 2s infinite alternate;
+    }
+
+    @keyframes cakeGlow {
+        0% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.7); }
+        100% { box-shadow: 0 0 50px rgba(255, 215, 0, 0.9); }
+    }
+
+    #messageCake .letter-content {
+        font-size: 1.2rem;
+        line-height: 1.6;
+    }
+
+    #messageCake .salutation {
+        margin-bottom: 20px;
+    }
+
+    #messageCake .body {
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    #messageCake .signature {
+        text-align: right;
+        font-style: italic;
+        margin-top: 30px;
+    }
+
+    #messageCake .close-btn {
+        background: white;
+        color: var(--purple-1);
+        border: none;
+        padding: 8px 20px;
+        border-radius: 50px;
+        margin-top: 15px;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        transition: all 1s ease;
+    }
+
+    .gold-theme #messageCake .close-btn {
+        color: var(--gold-5);
+    }
+
+    /* Image Button Styles */
+    #surpriseBtn {
+        background: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        margin: 20px auto;
+        display: block;
+        transition: all 0.3s ease;
+        max-width: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    #surpriseBtn img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    #surpriseBtn:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Memory section */
+    .memory-section {
+        margin: 80px 0;
+        text-align: center;
+    }
+
+    .memory-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .memory-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        height: 300px;
+        transition: all 0.5s ease;
+        background: #1a0a2a;
+        box-shadow: 0 0 10px rgba(157, 0, 255, 0.3);
+    }
+
+    .gold-theme .memory-card {
+        background: #2a1a0a;
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+
+    .memory-card:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 0 25px rgba(199, 36, 255, 0.5);
+    }
+
+    .gold-theme .memory-card:hover {
+        box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+    }
+
+    .memory-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .memory-card:hover img {
+        transform: scale(1.1);
+    }
+
+    .memory-card p {
+        font-family: 'Montserrat', sans-serif;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(26, 0, 51, 0.8);
+        color: white;
+        padding: 15px;
+        margin: 0;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        font-weight: 600;
+    }
+
+    .gold-theme .memory-card p {
+        background: rgba(42, 26, 0, 0.8);
+    }
+
+    .memory-card:hover p {
+        transform: translateY(0);
+    }
+
+    /* Reasons section */
+    .reasons-section {
+        margin: 80px 0;
+        text-align: center;
+    }
+
+    .reasons-list {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0;
+        list-style-position: inside;
+        text-align: left;
+    }
+
+    .reasons-list li {
+        font-family: 'Montserrat', sans-serif;
+        padding: 15px;
+        margin: 10px 0;
+        background: rgba(42, 10, 58, 0.7);
+        border-radius: 5px;
+        opacity: 0;
+        animation-fill-mode: forwards;
+        box-shadow: 0 0 10px rgba(157, 0, 255, 0.2);
+        transition: all 0.3s ease;
+        color: #f0e6ff;
+    }
+
+    .gold-theme .reasons-list li {
+        background: rgba(58, 42, 0, 0.7);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        color: #fff8e6;
+    }
+
+    .reasons-list li:hover {
+        transform: translateX(10px);
+        background: rgba(58, 10, 78, 0.9);
+        box-shadow: 0 0 15px rgba(199, 36, 255, 0.4);
+    }
+
+    .gold-theme .reasons-list li:hover {
+        background: rgba(78, 58, 0, 0.9);
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    }
+
+    /* Final message */
+    .final-message {
+        text-align: center;
+        margin: 80px 0;
+        padding: 40px 20px;
+    }
+
+    .final-message p {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        color: #e100ff;
+        text-shadow: 0 0 10px rgba(225, 0, 255, 0.5);
+        transition: all 1s ease;
+    }
+
+    .gold-theme .final-message p {
+        color: var(--gold-1);
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    /* Audio controls */
+    .audio-controls {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 100;
+        display: flex;
+        gap: 10px;
+    }
+
+    .audio-btn {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .audio-btn:hover {
+        background: rgba(255, 255, 255, 0.4);
+        transform: scale(1.1);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        .memory-grid { grid-template-columns: 1fr; }
+        .memory-card { height: 250px; }
+        #messageCake, #cakePopup { width: 80%; }
+    }
+</style>
+</head>
+<body>
+    <!-- Confetti background -->
+    <canvas id="confetti"></canvas>
+    
+    <!-- Cake Popup -->
+    <div id="cakePopup">
+        <button class="close-cake-btn">×</button>
+        <h3>Make a Wish!</h3>
+        <div class="cake">
+            <div class="cake-bottom"></div>
+            <div class="cake-top"></div>
+            <div class="candle"></div>
+            <div class="flame"></div>
+        </div>
+        <p>Blow out the candle and make your wish!</p>
+    </div>
+    
+    <!-- Message Cake -->
+    <div id="messageCake">
+        <div class="letter-content">
+            <div class="salutation">Dear yel x loml,</div>
+            <div class="body">
+               Wishing you the happiest birthday. Hindi man natin ma celebrate itong bday mo, pero gusto kong malaman mo na lagi akong nandito para sa'yo, cheering on you, praying for you, and silently wishing you all the happiness in the world. I hope matupad lahat ng dreams mo, maliit man or malaki yan.
+                <br><br>
+                I just wanna say na you're a person who brings so much joy in my life kaya i'm super grateful to have you. Enjoy your day and Happy Birthday, I love you palagi!
+            </div>
+            <div class="signature">
+                Your poging boyfriend,<br>
+                wiz
+            </div>
+        </div>
+        <button class="close-btn">Close</button>
+    </div>
+    
+    <!-- Audio controls -->
+    <div class="audio-controls">
+        <button id="playDefaultBtn" class="audio-btn" title="Play default song">🎵</button>
+        <button id="stopAudioBtn" class="audio-btn" title="Stop all audio">⏹️</button>
+    </div>
+    
+    <!-- Main content container -->
+    <div class="container">
+        <!-- Hero section -->
+        <div class="hero animate__animated animate__fadeIn">
+            <h1 class="animate__animated animate__bounceIn">Happy Birthday, <span class="name animate__animated animate__heartBeat animate__infinite">Mariel!</span></h1>
+            <p class="subtitle">Wishing you the happiest birthday!</p>
+            <div class="heart">❤️</div>
+            <button class="wish-btn animate__animated animate__pulse animate__infinite">Make a Wish</button>
+        </div>
+        
+        <!-- Memory section -->
+        <div class="memory-section">
+            <h2 class="animate__animated animate__fadeIn">Our Special Memories</h2>
+            <div class="memory-grid">
+                <div class="memory-card">
+                    <img src="pic1.jpeg"  class="animate__animated animate__zoomIn">
+                    <p>Sponty dates</p>
+                </div>
+                <div class="memory-card">
+                    <img src="pic2.jpg" class="animate__animated animate__zoomIn animate__delay-1s">
+                    <p>Stay-at-home dates</p>
+                </div>
+                <div class="memory-card">
+                    <img src="pic3.jpeg" class="animate__animated animate__zoomIn animate__delay-2s">
+                    <p>Just being us</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Reasons I love you -->
+        <div class="reasons-section">
+            <h2 class="animate__animated animate__fadeIn">10 Reasons Why I Love You</h2>
+            <ol class="reasons-list">
+                <li class="animate__animated">Your beautiful smile</li>
+                <li class="animate__animated">Your beautiful eyes</li>
+                <li class="animate__animated">Your laugh that brightens my day</li>
+                <li class="animate__animated">Your kindness</li>
+                <li class="animate__animated">The way you make me feel safe</li>
+                <li class="animate__animated">The way you care for me</li>
+                <li class="animate__animated">How you understand me</li>
+                <li class="animate__animated">How you make ordinary moments special</li>
+                <li class="animate__animated">Being with me all the time</li>
+                <li class="animate__animated">Simply because of who you are</li>
+            </ol>
+        </div>
+        
+        <!-- Final message -->
+        <div class="hero animate__animated animate__fadeIn">
+            <h1 class="animate__animated animate__bounceIn"> <span class="name animate__animated animate__heartBeat animate__infinite">Derpy the tiger sent you a message!</span></h1>
+            
+            <!-- Image button for surprise -->
+            <button id="surpriseBtn" class="animate__animated animate__pulse animate__infinite">
+                <img src="button.png">
+            </button>
+        </div>
+    </div>
+
+    <!-- Audio elements (hidden) -->
+    <audio id="defaultAudio" loop>
+        <!-- Replace with your default audio file -->
+        <source src="bday-song.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="specialAudio">
+        <!-- Replace with your special audio file -->
+        <source src="golden-song-2.mp3" type="audio/mpeg">
+    </audio>
+
+ <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Audio elements
+        const defaultAudio = document.getElementById('defaultAudio');
+        const specialAudio = document.getElementById('specialAudio');
+        const playDefaultBtn = document.getElementById('playDefaultBtn');
+        const stopAudioBtn = document.getElementById('stopAudioBtn');
+        
+        // Try to play default audio automatically
+        function tryAutoplay() {
+            const promise = defaultAudio.play();
+            
+            if (promise !== undefined) {
+                promise.catch(error => {
+                    // Autoplay was prevented - show UI indication
+                    console.log("Autoplay prevented, waiting for user interaction");
+                    playDefaultBtn.style.display = 'block';
+                });
+            }
+        }
+        
+        // Initial attempt to play audio
+        tryAutoplay();
+        
+        // Confetti canvas
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvas.style.display = 'block';
+        
+        let particles = [];
+        const particleCount = 20;
+        
+        // Initial purple theme colors
+        let themeColors = [
+            '#9d00ff', // purple
+            '#c724ff', // light purple
+            '#e100ff', // pink
+            '#6e00ff', // deep purple
+            '#9c27b0'  // violet
+        ];
+        
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height - canvas.height,
+                size: Math.random() * 8 + 3,
+                speed: Math.random() * 1.5 + 0.5,
+                color: themeColors[Math.floor(Math.random() * themeColors.length)],
+                rotation: Math.random() * 360,
+                rotationSpeed: Math.random() * 2 - 1,
+                shape: Math.random() > 0.5 ? 'rect' : 'circle'
+            });
+        }
+        
+        // Draw confetti
+        function drawConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                ctx.save();
+                ctx.translate(particle.x, particle.y);
+                ctx.rotate(particle.rotation * Math.PI / 180);
+                
+                ctx.fillStyle = particle.color;
+                
+                if (particle.shape === 'circle') {
+                    ctx.beginPath();
+                    ctx.arc(0, 0, particle.size/2, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    ctx.fillRect(-particle.size/2, -particle.size/2, particle.size, particle.size);
+                }
+                
+                ctx.restore();
+                
+                // Update position
+                particle.y += particle.speed;
+                particle.rotation += particle.rotationSpeed;
+                
+                // Reset particles that go off screen
+                if (particle.y > canvas.height) {
+                    particle.y = -particle.size;
+                    particle.x = Math.random() * canvas.width;
+                }
+            });
+            
+            requestAnimationFrame(drawConfetti);
+        }
+        
+        // Start confetti immediately
+        drawConfetti();
+        
+        // Function to create a burst of golden confetti
+        function createGoldenBurst() {
+            const burstParticles = [];
+            const burstCount = 100;
+            const burstDuration = 2000; // 2 seconds
+            
+            for (let i = 0; i < burstCount; i++) {
+                burstParticles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    size: Math.random() * 10 + 5,
+                    speedX: (Math.random() - 0.5) * 10,
+                    speedY: (Math.random() - 0.5) * 10,
+                    color: ['#FFD700', '#FFC000', '#FFA500', '#FF8C00', '#DAA520'][Math.floor(Math.random() * 5)],
+                    rotation: Math.random() * 360,
+                    rotationSpeed: Math.random() * 5 - 2.5,
+                    shape: Math.random() > 0.5 ? 'rect' : 'circle',
+                    life: burstDuration,
+                    opacity: 1
+                });
+            }
+            
+            // Animate the burst
+            function animateBurst() {
+                ctx.save();
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw regular confetti
+                drawConfetti();
+                
+                // Draw burst particles
+                burstParticles.forEach((particle, index) => {
+                    if (particle.life <= 0) {
+                        burstParticles.splice(index, 1);
+                        return;
+                    }
+                    
+                    ctx.save();
+                    ctx.translate(particle.x, particle.y);
+                    ctx.rotate(particle.rotation * Math.PI / 180);
+                    ctx.globalAlpha = particle.opacity;
+                    
+                    ctx.fillStyle = particle.color;
+                    
+                    if (particle.shape === 'circle') {
+                        ctx.beginPath();
+                        ctx.arc(0, 0, particle.size/2, 0, Math.PI * 2);
+                        ctx.fill();
+                    } else {
+                        ctx.fillRect(-particle.size/2, -particle.size/2, particle.size, particle.size);
+                    }
+                    
+                    ctx.restore();
+                    
+                    // Update position and life
+                    particle.x += particle.speedX;
+                    particle.y += particle.speedY;
+                    particle.rotation += particle.rotationSpeed;
+                    particle.life -= 16; // ~60fps
+                    particle.opacity = particle.life / burstDuration;
+                });
+                
+                if (burstParticles.length > 0) {
+                    requestAnimationFrame(animateBurst);
+                }
+            }
+            
+            animateBurst();
+        }
+        
+        // Function to create floating hearts
+        function createFloatingHearts() {
+            const heartContainer = document.createElement('div');
+            document.body.appendChild(heartContainer);
+            heartContainer.style.position = 'fixed';
+            heartContainer.style.top = '0';
+            heartContainer.style.left = '0';
+            heartContainer.style.width = '100%';
+            heartContainer.style.height = '100%';
+            heartContainer.style.pointerEvents = 'none';
+            heartContainer.style.zIndex = '5';
+            
+            // Create hearts for 5 seconds
+            const heartInterval = setInterval(() => {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.className = 'heart-particle';
+                
+                // Random position at bottom of screen
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = '100vh';
+                
+                // Random size
+                const size = Math.random() * 20 + 10;
+                heart.style.fontSize = size + 'px';
+                
+                // Random animation duration
+                const duration = Math.random() * 3 + 3;
+                heart.style.animationDuration = duration + 's';
+                
+                heartContainer.appendChild(heart);
+                
+                // Remove heart after animation completes
+                setTimeout(() => {
+                    heart.remove();
+                }, duration * 1000);
+            }, 200);
+            
+            // Stop creating hearts after 5 seconds
+            setTimeout(() => {
+                clearInterval(heartInterval);
+                heartContainer.remove();
+            }, 5000);
+        }
+        
+        // Cake popup elements
+        const wishBtn = document.querySelector('.wish-btn');
+        const cakePopup = document.getElementById('cakePopup');
+        const closeCakeBtn = document.querySelector('.close-cake-btn');
+        
+        // Make a Wish button click handler
+        wishBtn.addEventListener('click', function() {
+            cakePopup.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when popup is open
+        });
+        
+        // Close cake popup
+        closeCakeBtn.addEventListener('click', function() {
+            cakePopup.style.display = 'none';
+            document.body.style.overflow = ''; // Re-enable scrolling
+        });
+        
+        // Close cake popup when clicking outside
+        cakePopup.addEventListener('click', function(e) {
+            if (e.target === cakePopup) {
+                cakePopup.style.display = 'none';
+                document.body.style.overflow = ''; // Re-enable scrolling
+            }
+        });
+        
+        // Surprise button and message cake
+        const surpriseBtn = document.getElementById('surpriseBtn');
+        const messageCake = document.getElementById('messageCake');
+        const closeBtn = document.querySelector('.close-btn');
+        const body = document.body;
+        
+        surpriseBtn.addEventListener('click', function() {
+            // Toggle gold theme
+            body.classList.add('gold-theme');
+            
+            // Change confetti colors to gold
+            themeColors = [
+                '#FFD700', // gold
+                '#FFC000', // orange gold
+                '#FFA500', // orange
+                '#FF8C00', // dark orange
+                '#DAA520'  // goldenrod
+            ];
+            
+            // Update all particles with new colors
+            particles.forEach(particle => {
+                particle.color = themeColors[Math.floor(Math.random() * themeColors.length)];
+            });
+            
+            // Show message cake
+            messageCake.style.display = 'block';
+            
+            // Play special audio (stop default first)
+            defaultAudio.pause();
+            specialAudio.currentTime = 0;
+            specialAudio.play();
+            
+            // Create special effects
+            createGoldenBurst();
+            createFloatingHearts();
+            
+            // Change button image
+            surpriseBtn.innerHTML = '<img src="button.png" alt="I Love You!">';
+            surpriseBtn.classList.remove('animate__pulse');
+        });
+        
+        closeBtn.addEventListener('click', function() {
+            messageCake.style.display = 'none';
+        });
+        
+        // Audio control buttons
+        playDefaultBtn.addEventListener('click', function() {
+            // Stop special audio if playing
+            specialAudio.pause();
+            specialAudio.currentTime = 0;
+            
+            // Play default audio
+            defaultAudio.currentTime = 0;
+            defaultAudio.play();
+            
+            // Hide the play button if it was shown due to autoplay block
+            playDefaultBtn.style.display = 'none';
+        });
+        
+        stopAudioBtn.addEventListener('click', function() {
+            // Stop all audio
+            defaultAudio.pause();
+            specialAudio.pause();
+            defaultAudio.currentTime = 0;
+            specialAudio.currentTime = 0;
+        });
+        
+        // Animate reasons list
+        const reasons = document.querySelectorAll('.reasons-list li');
+        reasons.forEach((reason, index) => {
+            setTimeout(() => {
+                reason.style.animation = 'fadeInUp 0.5s forwards';
+                reason.style.animationDelay = `${index * 0.2}s`;
+            }, 500);
+        });
+        
+        // Memory card animations
+        const memoryCards = document.querySelectorAll('.memory-card');
+        memoryCards.forEach((card, index) => {
+            setTimeout(() => {
+                card.style.opacity = 1;
+                card.style.transform = 'translateY(0)';
+            }, index * 200 + 500);
+        });
+        
+        // Resize canvas on window resize
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        // Add click event to document to handle audio autoplay
+        document.addEventListener('click', function() {
+            // Try to play audio if it wasn't playing
+            if (defaultAudio.paused && specialAudio.paused) {
+                tryAutoplay();
+            }
+        }, { once: true }); // Only try once
+    });
+</script>
+</body>
+</html>
